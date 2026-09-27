@@ -15,3 +15,19 @@ class Settings(models.Model):
     class Meta:
         verbose_name = "Основная настройка"
         verbose_name_plural = "Основные настройки"
+
+
+class Room(models.Model):
+    name = models.CharField(max_length=100,verbose_name="Название номера")
+    description = models.TextField(verbose_name="Описание")
+    price = models.IntegerField(verbose_name="Цена за ночь")
+    guests = models.IntegerField(verbose_name="Количество гостей")
+    area = models.IntegerField(verbose_name="Площадь (м²)")
+    image = models.ImageField(upload_to="rooms/",verbose_name="Фотография")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Номер"
+        verbose_name_plural = "Номера"

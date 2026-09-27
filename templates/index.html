@@ -253,3 +253,40 @@
   <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
+<div class="rooms-grid reveal">
+
+    {% for room in rooms %}
+
+    <article class="room-card">
+        <div class="room-media">
+            {% if room.image %}
+                <img src="{{ room.image.url }}" alt="{{ room.name }}">
+            {% endif %}
+        </div>
+
+        <div class="room-body">
+            <h3>{{ room.name }}</h3>
+            <p>{{ room.description }}</p>
+
+            <div class="room-meta">
+                <span class="tag">{{ room.guests }} гостя</span>
+                <span class="tag">{{ room.area }} м²</span>
+                <span class="tag">Завтрак</span>
+            </div>
+
+            <div class="room-foot">
+                <div class="price">
+                    <b>{{ room.price }} ₸</b>
+                    <span>/ ночь</span>
+                </div>
+
+                <a href="{% url 'rooms' %}" class="btn btn-ghost">
+                    Подробнее
+                </a>
+            </div>
+        </div>
+    </article>
+
+    {% endfor %}
+
+</div>
